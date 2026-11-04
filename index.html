@@ -47,12 +47,14 @@
     }
 
     /* Presentation Image Styling */
-   .slide-image {
-  max-height: 70vh; /* Restricts maximum height to 70% of the screen height */
-  width: auto;      /* Keeps the image true to scale without distortion */
+.reveal section img.slide-image {
+  max-height: 65vh !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
   object-fit: contain;
+  margin: 0 auto;
   display: block;
-  margin: 0 auto;   /* Centers the image horizontally */
 }
   </style>
 </head>
