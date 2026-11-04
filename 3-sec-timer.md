@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-Second Timer</title>
+    <!-- Import JetBrains Mono Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'JetBrains Mono', monospace; /* Swapped to JetBrains Mono */
+            font-size: 64pt;                          /* Kept 64pt size */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="timer">3</div>
+
+    <script>
+        let timeLeft = 3;
+        const timerElement = document.getElementById("timer");
+
+        let countdown = setInterval(() => {
+            timeLeft--;
+            
+            if (timeLeft > 0) {
+                timerElement.textContent = timeLeft;
+            } else {
+                timerElement.textContent = "0";
+                clearInterval(countdown);
+                
+                // Trigger next slide / redirect if running on a web presentation
+                console.log("Timer finished!");
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
