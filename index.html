@@ -47,12 +47,13 @@
     }
 
     /* Presentation Image Styling */
-    .slide-image {
-      max-height: 500px;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
+   .slide-image {
+  max-height: 70vh; /* Restricts maximum height to 70% of the screen height */
+  width: auto;      /* Keeps the image true to scale without distortion */
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;   /* Centers the image horizontally */
+}
   </style>
 </head>
 <body>
