@@ -1,8 +1,3 @@
----
-layout: page
-title: "3 Second Timer"
-permalink: /3
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +16,8 @@ permalink: /3
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'JetBrains Mono', monospace; /* Swapped to JetBrains Mono */
-            font-size: 64pt;                          /* Kept 64pt size */
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 64pt;
         }
     </style>
 </head>
@@ -42,8 +37,6 @@ permalink: /3
             } else {
                 timerElement.textContent = "0";
                 clearInterval(countdown);
-                
-                // Trigger next slide / redirect if running on a web presentation
                 console.log("Timer finished!");
             }
         }, 1000);
