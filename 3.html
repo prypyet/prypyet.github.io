@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>3-Second Timer</title>
+    <title>Milliseconds Timer</title>
     <!-- Import JetBrains Mono Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,27 +19,45 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 64pt;
         }
+        #timer {
+            letter-spacing: 4px;
+            font-variant-numeric: tabular-nums; /* Prevents layout jitter */
+        }
     </style>
 </head>
 <body>
 
-    <div id="timer">3</div>
+    <div id="timer">03.00</div>
 
     <script>
-        let timeLeft = 3;
+        const durationMs = 3000; // 3 seconds total
+        let startTime = Date.now();
         const timerElement = document.getElementById("timer");
 
-        let countdown = setInterval(() => {
-            timeLeft--;
-            
-            if (timeLeft > 0) {
-                timerElement.textContent = timeLeft;
-            } else {
-                timerElement.textContent = "0";
-                clearInterval(countdown);
+        function updateTimer() {
+            let elapsed = Date.now() - startTime;
+            let remaining = durationMs - elapsed;
+
+            if (remaining <= 0) {
+                timerElement.textContent = "00.00";
+                clearInterval(timerInterval);
                 console.log("Timer finished!");
+                // window.location.href = "next-slide.html"; // Next slide action
+                return;
             }
-        }, 1000);
+
+            let seconds = Math.floor(remaining / 1000);
+            let milliseconds = Math.floor((remaining % 1000) / 10); // Show 2 digits of milliseconds
+
+            // Format as SS.ms with leading zeros
+            let formattedSeconds = String(seconds).padStart(2, '0');
+            let formattedMs = String(milliseconds).padStart(2, '0');
+
+            timerElement.textContent = `${formattedSeconds}.${formattedMs}`;
+        }
+
+        // Update every 30 milliseconds for a smooth, high-precision counter
+        let timerInterval = setInterval(updateTimer, 30);
     </script>
 
 </body>
