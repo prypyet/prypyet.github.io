@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Presentation Deck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Reveal.js Core CSS & White Theme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css">
+  
+  <style>
+    /* Fixed KL University Logo in Top-Right Corner */
+    .kl-logo {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      z-index: 99;
+      max-height: 65px;
+      width: auto;
+    }
+
+    /* Embedded Timer Container */
+    .iframe-container {
+      width: 100%;
+      height: 520px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Presentation Image Styling */
+    .slide-image {
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- KL University Logo (Fixed upper-right corner) -->
+  <img 
+    src="https://upload.wikimedia.org/wikipedia/en/7/7b/K_L_Deemed_to_be_University_logo.png" 
+    alt="KL University Logo" 
+    class="kl-logo"
+  >
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1: 30-Second Timer -->
+      <section>
+        <h2>3-Second Timer</h2>
+        <iframe src="/3/index.html" class="iframe-container" title="3 Second Timer"></iframe>
+      </section>
+
+      <!-- SLIDE 2: Hosted Image -->
+      <section>
+        <h2>Featured Image</h2>
+        <img src="/image/image.png" alt="Hosted Image" class="slide-image">
+      </section>
+
+      <!-- SLIDE 3: 24-Hour Timer -->
+      <section>
+        <h2>24-Hour Timer</h2>
+        <!-- Update the src path below if your 24-hr timer file has a specific name -->
+        <iframe src="/24/index.html" class="iframe-container" title="24 Hour Timer"></iframe>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+  <script>
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true
+    });
+  </script>
+</body>
+</html>
