@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24-Hour Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 64pt;
+        }
+        #timer {
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="timer">24:00</div>
+
+    <script>
+        // Total duration: 24 hours in milliseconds (24 * 60 * 60 * 1000)
+        const durationMs = 24 * 60 * 60 * 1000;
+        let startTime = Date.now();
+        const timerElement = document.getElementById("timer");
+
+        function updateTimer() {
+            let elapsed = Date.now() - startTime;
+            let remaining = durationMs - elapsed;
+
+            if (remaining <= 0) {
+                timerElement.textContent = "00:00";
+                clearInterval(timerInterval);
+                console.log("Timer finished!");
+                return;
+            }
+
+            // Calculate remaining hours and minutes
+            let totalMinutes = Math.floor(remaining / (1000 * 60));
+            let hours = Math.floor(totalMinutes / 60);
+            let minutes = totalMinutes % 60;
+
+            // Format as HH:MM with leading zeros
+            let formattedHours = String(hours).padStart(2, '0');
+            let formattedMinutes = String(minutes).padStart(2, '0');
+
+            timerElement.textContent = `${formattedHours}:${formattedMinutes}`;
+        }
+
+        // Run immediately, then update every 1 second (since minutes/hours don't need sub-second ticks)
+        updateTimer();
+        let timerInterval = setInterval(updateTimer, 1000);
+    </script>
+
+</body>
+</html>
